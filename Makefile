@@ -1,4 +1,4 @@
-#Sample makefile test1.0.x
+#Sample makefile test1.1.x
 
 run: circular_buffer.o
 	gcc -o run circular_buffer.o
