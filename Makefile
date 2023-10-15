@@ -4,7 +4,8 @@
 COMPILER = gcc
 
 #default value is empty
-CFLAGS = -c -g -Wall
+CFLAGS = -c -g -Wall -Wextra -Wstrict-prototypes -Wno-pedantic -Wunused -Wsign-compare -Wconversion -Wno-missing-field-initializers -Wno-missing-braces
+CFLAGS=-std=c99
 
 #object files
 OBJECTS = main.o source/circular_buffer.o
