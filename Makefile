@@ -23,8 +23,8 @@ all:
 run: $(OBJECTS)
 	$(COMPILER) -o $@ $(OBJECTS)
 	
-main.o: main.c source/circular_buffer.h
-	$(COMPILER) $(CFLAGS) main.c
+# main.o: main.c source/circular_buffer.h
+# 	$(COMPILER) $(CFLAGS) main.c
 
 circular_buffer.o: source/circular_buffer.c source/circular_buffer.h
 	$(COMPILER) $(CFLAGS) source/circular_buffer.c
@@ -37,7 +37,7 @@ clean:
 	$(RM) *.o run
 	$(RM) $(INSTALLDIR)/*.*
 
-#is necessary?
+#is it necessary?
 install:
 	cp run $(INSTALLDIR)
 
