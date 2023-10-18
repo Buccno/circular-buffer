@@ -11,7 +11,6 @@
 
 #include "circular_buffer.h"
 
-
 /*******************************************************************************
  * Macros
 *******************************************************************************/
@@ -35,7 +34,7 @@
  * Private Variables
 *******************************************************************************/
 
-static circular_buff_config_t m_buffer;
+// static circular_buff_config_t m_buffer;
 
 static bool m_circ_buffer_initialized = false;
 
@@ -43,7 +42,7 @@ static bool m_circ_buffer_initialized = false;
  * Function Definitions
 *******************************************************************************/
 
-static bool circ_buffer_initialization(circular_buff_config_t* p_buffer);
+// static bool circ_buffer_initialization(circular_buff_config_t* p_buffer);
 
 /*******************************************************************************
  * Function Definitions
@@ -59,6 +58,9 @@ h_circular_id circular_buffer_init(circular_buf_t *p_circular,
 {
     if (NULL == p_circular || NULL == p_buf || 0U == size)
     {
+        
+        printf("circular_buffer_init NULL VALUE ENTERED\n");
+
         return NULL;
     }
 
@@ -66,6 +68,8 @@ h_circular_id circular_buffer_init(circular_buf_t *p_circular,
     p_circular->size = size;
     p_circular->head = 0U;
     p_circular->tail = 0U;
+
+    printf("buffer successfully initialized...\n");
 
     return p_circular;
 }
@@ -76,6 +80,8 @@ bool circular_buffer_write(h_circular_id h_circ,
 {
     if (NULL == h_circ)
     {
+        printf("circular_buffer_write NULL VALUE ENTERED\n");
+
         return false;
     }
 
@@ -104,7 +110,7 @@ bool circular_buffer_write(h_circular_id h_circ,
     
     if (0U != diff)
     {
-        (void)memcpy(&p_circ->p_buf[head], p_data, diff);
+        (void)memcpy(&p_circ->p_buf[p_circ->head], p_data, diff);
         (void)memcpy(p_circ->p_buf, (p_data + diff), (size - diff));
     }
     else
@@ -122,7 +128,7 @@ bool circular_buffer_read(h_circular_id h_circ,
                           uint8_t *p_data, 
                           size_t size)
 {
-    if ((NULL = p_data) || (0U == size) || (NULL == h_circ))
+    if ((NULL == p_data) || (0U == size) || (NULL == h_circ))
     {
         return false;
     }
@@ -152,7 +158,7 @@ bool circular_buffer_read(h_circular_id h_circ,
         
         (void)memcpy(p_data, &p_circ->p_buf[p_circ->tail], p_circ->size - p_circ->tail);
 
-        (void)memcpy(p_data + , &p_circ->p_buf[0], size - (p_circ->size - p_circ->tail));
+        (void)memcpy(p_data, &p_circ->p_buf[0], size - (p_circ->size - p_circ->tail));
 
     }
     else

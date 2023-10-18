@@ -35,12 +35,19 @@ void first_scenario(void)
                                                 size);
     if (NULL == f_buff)
     {
+        printf("circular_buffer_init return val is NULL\n");
+
         return;
     }
 
     uint8_t p_data[3U] = {0xAAU, 0xAAU, 0xAAU};        
 
-    bool ret_val = circular_buffer_write(f_buff, p_data, 3U);     
+    bool ret_val = circular_buffer_write(f_buff, p_data, 3U);    
+
+    if (true == ret_val)
+    {
+        printf("successfully written to buffer...\n");
+    } 
 
     print_array(f_buff->p_buf, 3U);                              
 }
