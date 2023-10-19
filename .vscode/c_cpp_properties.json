@@ -11,6 +11,21 @@
                 "_UNICODE"
             ],
             "cppStandard": "c++17"
+        },
+        {
+            "name": "Win32",
+            "includePath": ["${workspaceFolder}/**"],
+            "defines": [],
+            "compilerPath": "gcc",
+            "cStandard": "c11",
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "path": ["${workspaceFolder}"],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "forcedInclude": [],
+            "macFrameworkPath": []
         }
     ],
     "version": 4
