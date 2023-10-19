@@ -111,14 +111,17 @@ bool circular_buffer_write(h_circular_id h_circ,
     if (0U != diff)
     {
         (void)memcpy(&p_circ->p_buf[p_circ->head], p_data, diff);
+
         (void)memcpy(p_circ->p_buf, (p_data + diff), (size - diff));
+    
+        p_circ->head = (p_circ->head + size) % p_circ->size;
     }
     else
     {
         (void)memcpy(p_circ->p_buf, p_data, size);
-    }
 
-    p_circ->head = (p_circ->head + size) % p_circ->size;
+        p_circ->head = (p_circ->head + size);
+    }
 
     return true;
 }
@@ -155,18 +158,23 @@ bool circular_buffer_read(h_circular_id h_circ,
     
     if (0U != diff)
     {
-        
         (void)memcpy(p_data, &p_circ->p_buf[p_circ->tail], p_circ->size - p_circ->tail);
 
         (void)memcpy(p_data, &p_circ->p_buf[0], size - (p_circ->size - p_circ->tail));
+        
+        memset(&p_circ->p_buf[p_circ->tail], 0, size);
+
+        p_circ->tail = ((p_circ->tail + size) % p_circ->size);
 
     }
     else
     {
         (void)memcpy(p_data, &p_circ->p_buf[p_circ->tail], size);
-    }
 
-    p_circ->tail = ((p_circ->tail + size) % p_circ->size);
+        memset(&p_circ->p_buf[p_circ->tail], 0, size);
+
+        p_circ->tail = (p_circ->tail + size);
+    }
 }
 
 

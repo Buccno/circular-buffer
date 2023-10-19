@@ -13,6 +13,8 @@
 #include "stdint.h"
 #include "stdbool.h"
 #include "string.h"
+#include "stdlib.h"
+#include "time.h"
 
 #ifndef CIRCULAR_BUFFER_H_
 #define CIRCULAR_BUFFER_H_
