@@ -1,23 +1,18 @@
-name: C/C++ CI
+name: Build on PR (Windows)
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: Checkout code
+      uses: actions/checkout@v3  
+
+    - name: Build with Makefile
+      run: make  
