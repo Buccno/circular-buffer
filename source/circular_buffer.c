@@ -126,7 +126,19 @@ bool circular_buffer_write(h_circular_id h_circ,
     return true;
 }
 
-
+/**
+ * @brief Reads data from a circular buffer.
+ * 
+ * This function reads a specified amount of data from a circular buffer and 
+ * updates the tail position accordingly. If the requested size exceeds the 
+ * available data in the buffer, the function returns false.
+ * 
+ * @param h_circ Handle to the circular buffer.
+ * @param p_data Pointer to the data buffer where the read data will be stored.
+ * @param size The amount of data to read from the circular buffer.
+ * @return true: if the data was successfully read.
+ *         false: otherwise.
+ */
 bool circular_buffer_read(h_circular_id h_circ,
                           uint8_t *p_data, 
                           size_t size)
