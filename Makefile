@@ -4,7 +4,7 @@
 COMPILER = gcc
 
 #default value is empty
-CFLAGS = -c -g -m64 -nostartfiles -Wall -Wextra -Wstrict-prototypes -Wno-pedantic -Wunused -Wsign-compare -Wconversion -Wno-missing-field-initializers -Wno-missing-braces
+CFLAGS = -c -g -nostartfiles -Wall -Wextra -Wstrict-prototypes -Wno-pedantic -Wunused -Wsign-compare -Wconversion -Wno-missing-field-initializers -Wno-missing-braces
 CFLAGS=-std=c99
 
 #object files

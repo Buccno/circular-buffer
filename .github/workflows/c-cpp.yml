@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install 32-bit libraries
+      run: sudo apt-get install gcc-multilib g++-multilib
     - name: build
       run: make all
