@@ -23,7 +23,7 @@ all:
 run: $(OBJECTS)
 	$(COMPILER) -o $@ $(OBJECTS)
 	
-# main.o: main.c source/circular_buffer.h
+# main.o: main.c source/circular_buffer.hP
 # 	$(COMPILER) $(CFLAGS) main.c
 
 circular_buffer.o: source/circular_buffer.c source/circular_buffer.h
